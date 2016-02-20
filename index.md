@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Back to Blog 
+title: Back to Blog
 ---
 
-## Welcom to My New Blog !
+## Welcom to Crazy Quaternion !
    I didn't write blog since my daugher was born.  
    After 5 years,  I'm back.
 
