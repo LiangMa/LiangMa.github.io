@@ -5,6 +5,9 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
+author: 
+  weibo: http://weibo.com/bladesatan
+  github: http://github.com/LiangMa
 # Site settings
 title: Crazy Quaternion
 email: liangma.ul@gmail.com
@@ -16,6 +19,15 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: LiangMa
 github_username:  LiangMa
-
+rss_url: /pages/atom.xml
 # Build settings
 markdown: kramdown
+permalink: /:year/:month/:day/:title.html
+highlighter: rouge
+
+avatar:  /pages/avatar.gif
+favicon: /pages/avatar.gif
+
+disqus:
+   shortname:crazy_quaternion
+ 
