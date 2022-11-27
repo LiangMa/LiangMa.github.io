@@ -7,7 +7,11 @@ title: Back to Blog
    I didn't write blog since my daugher was born.  
    After 5 years,  I'm back.
 
-   My interst include X86 Virtualization(i.e Qemu/Kvm) and Physics Engine(e.g. Box2D, Bullet)
+   My interst include :
+    DPDK/OVS 
+    Linux Kernel Netdev
+    X86 Virtualization(i.e Qemu/Kvm)
+    Physics Engine(e.g. Box2D, Bullet)
 
 
 
