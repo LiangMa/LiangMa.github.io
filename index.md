@@ -8,10 +8,10 @@ title: Back to Blog
    After 5 years,  I'm back.
 
    My interst include :
-    DPDK/OVS 
-    Linux Kernel Netdev
-    X86 Virtualization(i.e Qemu/Kvm)
-    Physics Engine(e.g. Box2D, Bullet)
+    * DPDK/OVS 
+    * Linux Kernel Netdev
+    * X86 Virtualization(i.e Qemu/Kvm)
+    * Physics Engine(e.g. Box2D, Bullet)
 
 
 
