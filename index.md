@@ -4,10 +4,11 @@ title: Back to Blog
 ---
 
 ## Welcom to Crazy Quaternion !
-   I didn't write blog since my daugher was born.  
+   I didn't write blog since my older daugher was born.  
    After 12 years,  I'm back.
 
-   My interst include : .
+   My interst include : 
+
    - DPDK/OVS 
    - Linux Kernel Netdev
    - X86 Virtualization(i.e Qemu/Kvm)
