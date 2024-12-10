@@ -1,0 +1,169 @@
+# Setting Up the Foundational Environment
+
+## Selection of Operating System
+Given that we are establishing a development environment for Go, it is advisable to opt for Ubuntu 18.04 LTS. This version is recommended primarily because it integrates Go 1.10, negating the need to reference third-party PPA repositories, thereby simplifying the setup process. Additionally, since our subsequent debugging will utilize the GUI-based gdlv, it is also suggested to install a version with a desktop environment. Choices such as Unity, KDE, or XFCE can be selected based on personal preference.
+
+## Installation of Related Tools
+
+1. **Installation of Toolchain:**
+   
+   sudo apt update
+   sudo apt install -y build-essential golang software-properties-common
+   
+
+2. **Installation of Additional Tools:**
+   
+   sudo apt install -y libdb++-dev libssl-dev libreadline-dev autoconf curl wget vim graphviz
+   
+
+3. **Configuration of Go Environment Variables:**
+   `$GOPATH` is a crucial environment variable; thus, all subsequent tools or code should reside within this path. This setup facilitates future debugging and development work.
+
+   
+   mkdir ~/go
+   echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc
+   source ~/.bashrc
+   
+
+4. **Source Code Acquisition:**
+   Retrieve the latest code from the official GitHub repository. If you need to clone from your forked GitHub repo, you can use the following command, replacing the official link with your own GitHub repo link.
+
+   
+   go get -u github.com/ethereum/go-ethereum
+   
+
+   If you do not need to push back to your GitHub repo and only wish to browse or analyze, use the official link provided above.
+
+5. **Compilation:**
+   
+   cd $GOPATH/src/github.com/ethereum/go-ethereum/cmd/geth
+   go build
+   
+   Assuming no errors occur, you should see the `geth` binary file generated in this directory.
+
+# Configuring the Development Environment
+
+There are numerous options for Go development environments, such as LiteIDE, Goland (paid), VSCode, etc. After some exploration, the author has settled on a toolset that best matches their habits: Vim with the vim-go plugin.
+
+## Installation of the vim-go Plugin
+
+1. The author, having long used the Vim configuration management tool [spf13](https://github.com/spf13/spf13-vim), configures vim-go accordingly. Readers can also simplify their setup based on personal habits using [Vundle](https://github.com/VundleVim/Vundle.vim).
+
+2. If using spf13, activate the Golang option in `~/.vimrc.before.local` to load the vim-go plugin.
+
+3. On first use, install the necessary binaries for vim-go by entering `:GoInstallBinaries` in command mode within Vim.
+
+4. You can then open related source code for code reading.
+
+5. **Example:**
+   ![Example Image](https://images.xiaozhuanlan.com/photo/2018/9232d3637c670346ab30393d06bc0ba3.png)
+
+## Code Browsing and Reading
+
+1. Use `Ctrl+]` to jump to definitions, similar to using ctags. Return to the previous position with `Ctrl+t`.
+
+2. Use `g+]` to see all occurrences of a symbol globally and make selections.
+
+3. If using spf13, activate Tagbar for synchronized viewing. You can also install Tagbar independently.
+
+4. Utilize more advanced features like `guru` to find callers, callees, and global references.
+
+   4.1 First, configure the scope for `GoGuruScope`.
+
+   4.2 Use `GoCallers`, `GoCallees`, `GoReferrers`.
+
+   4.3 For more complex functionalities, refer to the [vim-go README](https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt).
+
+## Automatic Generation of Call Graphs with [go-callvis](https://github.com/TrueFurby/go-callvis)
+
+During code analysis, understanding the call relationships between modules, especially in large projects, can be time-consuming if done manually. Fortunately, go-callvis can significantly speed up this process.
+
+1. **Installation:**
+   
+   go get -u github.com/TrueFurby/go-callvis
+   cd $GOPATH/src/github.com/TrueFurby/go-callvis && make
+   
+
+2. **Analysis for Our Project:**
+   - **Example 1:**
+     
+     go-callvis -nostd -nointer -focus fetcher -group pkg,type -limit github.com/ethereum/go-ethereum/eth/fetcher,github.com/ethereum/go-ethereum/core github.com/ethereum/go-ethereum/cmd/geth/
+     
+   - **Example 2:**
+     
+     go-callvis -nostd -nointer -focus downloader -group pkg,type -limit github.com/ethereum/go-ethereum/eth/downloader github.com/ethereum/go-ethereum/cmd/geth/
+     
+
+3. **Generated Call Graph for eth/fetcher Module:**
+   ![eth/fetcher Module Call Graph](https://images.xiaozhuanlan.com/photo/2018/e28aa075fff90ed55ebe7519773903db.jpg)
+
+4. **Generated Call Graph for p2p Module:**
+   ![p2p Module Call Graph](https://images.xiaozhuanlan.com/photo/2018/f20af5c0f178269f3c906ed9c70f785f.jpg)
+
+# Configuring the Debugging Environment
+
+Go applications can be debugged using either gdb or delve. Debugging in Go is generally more complex than in other languages, particularly with the introduction of goroutines. Here, we recommend using gdlv, the GUI version of delve, due to its high integration with delve, as both are developed by the same team.
+
+## Installation and Usage of gdlv
+
+1. **Install delve:**
+   
+   go get -u github.com/derekparker/delve/cmd/dlv
+   
+
+2. **Install gdlv:**
+   
+   go get -u github.com/aarzilli/gdlv
+   
+
+3. **Run gdlv:**
+   
+   cd $GOPATH/src/github.com/ethereum/go-ethereum/cmd/geth
+   gdlv debug
+   
+
+4. **Example of Successful Execution:**
+   ![Successful Execution of gdlv](https://images.xiaozhuanlan.com/photo/2018/731efb3040d4ca2747b199de30c07b21.png)
+```
+
+**user**: 
+
+```
+can you save the result as a markdown file as well
+```
+
+**assistant**: 
+
+```
+Certainly, I can save the translation as a Markdown file. Please provide the file for translation.
+```
+
+**user**: 
+
+```
+how can I get the above translate result as a markdown file 
+```
+
+**assistant**: 
+
+```
+To obtain the translated result as a Markdown file, please follow these steps:
+
+1. **Prepare Your File**: Ensure your Markdown file is ready for translation.
+
+2. **Upload the File**: Use the interface provided by the platform to upload your file. This might involve clicking on an upload button or drag-and-drop functionality.
+
+3. **Submit for Translation**: Once the file is uploaded, submit it for translation through the provided interface.
+
+Please proceed with uploading your Markdown file for translation.
+```
+
+
+
+--------------------
+
+
+<a href="https://chatboxai.app" style="display: flex; align-items: center;">
+<img src='https://chatboxai.app/icon.png' style='width: 40px; height: 40px; padding-right: 6px'>
+<b style='font-size:30px'>Chatbox AI</b>
+</a>
